@@ -1,6 +1,6 @@
 /* Math Compendium site. Dark by default; the Light mode button switches (theme.js). */
-:root { --bg:#151A22; --card:#1E2530; --ink:#E8ECF2; --muted:#9AA4B4; --line:#3A4452; --p:#4DB4C7; --hl:#FFE066; --on-hl:#1F2633; }
-:root[data-theme="light"] { --bg:#F3F5F8; --card:#FFFFFF; --ink:#1F2633; --muted:#5C6676; --line:#C9CED8; --p:#1A6E7F; }
+:root { --bg:#151A22; --card:#1E2530; --ink:#E8ECF2; --muted:#9AA4B4; --line:#3A4452; --p:#4DB4C7; --hl:#FFE066; --on-hl:#1F2633; --p-ink:#0E1A20; }
+:root[data-theme="light"] { --bg:#F3F5F8; --card:#FFFFFF; --ink:#1F2633; --muted:#5C6676; --line:#C9CED8; --p:#1A6E7F; --p-ink:#FFFFFF; }
 * { box-sizing: border-box; }
 body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.6 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
 main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
@@ -33,8 +33,25 @@ a.card.link:hover, a.card.link:focus-visible { border-color:var(--p); }
 a.card.link h2 { color:var(--p); }
 .ex { align-items:center; }
 .crumbs { margin-top:28px; font-size:16px; color:var(--muted); }
-.player { position:relative; aspect-ratio:16/9; margin:0 0 18px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#000; }
+.player { position:relative; aspect-ratio:16/9; border-radius:10px; overflow:hidden; background:#000; box-shadow:0 1px 3px rgba(0,0,0,.25); }
 .player iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-.prob { font-size:20px; margin:0 0 8px; }
-.nav .go { margin-right:22px; }
-.yt { font-size:15px; margin-top:6px; }
+/* Watch pages, modelled on the College Algebra video pages (without the Try It). */
+main.wide { max-width:960px; }
+.eyebrow { font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:28px 0 0; }
+h1.vid { font-size:clamp(22px,4vw,30px); line-height:1.2; margin:6px 0 18px; letter-spacing:0; }
+nav.steps { display:flex; justify-content:space-between; gap:16px; margin-top:20px; }
+.step { display:flex; align-items:center; gap:14px; flex:0 1 48%; min-width:0; text-decoration:none; background:var(--card); border:1.5px solid var(--line); border-radius:10px; padding:14px 16px; transition:border-color .15s, transform .15s; }
+a.step:hover { border-color:var(--p); transform:translateY(-1px); }
+a.step:focus-visible { outline:2px solid var(--p); outline-offset:2px; }
+.step .arrow { flex:none; width:40px; height:40px; border-radius:50%; display:grid; place-items:center; background:var(--p); color:var(--p-ink); }
+.step .arrow svg { width:18px; height:18px; }
+.step .txt { min-width:0; }
+.step .k { display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+.step .t { display:block; color:var(--p); font-weight:700; margin-top:2px; line-height:1.35; }
+.step.next { flex-direction:row-reverse; text-align:right; margin-left:auto; }
+.step.off { opacity:.6; }
+.step.off .arrow { background:var(--line); color:var(--muted); }
+.step.off .t { color:var(--muted); }
+.quiet { margin-top:22px; font-size:14px; color:var(--muted); }
+.quiet a { color:var(--muted); }
+@media (max-width:560px) { nav.steps { flex-direction:column; } .step { flex-basis:auto; } }
