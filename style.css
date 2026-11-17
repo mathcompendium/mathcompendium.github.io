@@ -25,3 +25,6 @@ h1.sec { font-size: clamp(30px, 6.5vw, 46px); margin: 6px 0 28px; }
 .ex h2 { margin:2px 0 4px; }
 .ex > a { flex:none; display:block; line-height:0; }
 @media (max-width: 520px) { .ex { flex-direction:column; } .ex > a { width:100%; } .ex img { width:100%; } }
+.ex .ph { width:168px; aspect-ratio:16/9; flex:none; border-radius:8px; border:1px dashed var(--line); display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700; font-size:15px; }
+.badge { display:inline-block; margin-left:8px; padding:1px 8px; border-radius:999px; background:var(--hl); color:var(--on-hl); font-size:13px; vertical-align:1px; }
+@media (max-width: 520px) { .ex .ph { width:100%; } }
