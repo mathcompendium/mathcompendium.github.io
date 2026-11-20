@@ -197,4 +197,7 @@ a.sec-title:hover { text-decoration:underline; }
 .ti-credit { margin:14px 0 0; font-size:13px; color:var(--muted); }
 .ti-credit a { color:var(--muted); }
 .tryit .katex { font-size:1.06em; }
+.ti-lead { margin-right:.6em; }
+.ti-part { display:inline-block; margin-right:2em; }
+.ti-part:last-child { margin-right:0; }
 @media (max-width:560px) { .tryit { padding:16px 14px; } .ti-prompt, .ti-body ol { padding-left:20px; } }
