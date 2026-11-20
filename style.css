@@ -169,3 +169,32 @@ a.sec-title { text-decoration:none; }
 a.sec-title:hover { text-decoration:underline; }
 .sec-body .tiles { margin-bottom:2px; }
 .video footer { margin-top:36px; }
+
+/* The home page's header without a Start here card (Dan, 2026-11-20). */
+.top.solo { grid-template-columns:minmax(0,1fr); }
+.top.solo .lead { max-width:40em; }
+
+/* Try It under the video (Dan, 2026-11-20; the College Algebra examples site's panel): the book's two Try Its for the example,
+   a hint and the answers behind reveals. Math is KaTeX, loaded only on watch pages that have a Try It. */
+.tryit { margin-top:28px; background:var(--card); border:1px solid var(--line); border-left:4px solid var(--coral); border-radius:10px; padding:20px 22px; scroll-margin-top:16px; }
+.ti-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+.tryit h2 { font-size:20px; margin:0; color:var(--teal); }
+.ti-sub { font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+.ti-prompt { font:400 17px/1.6 var(--f-body); margin:0; padding-left:24px; }
+.ti-prompt > li { margin:6px 0 10px; padding-left:4px; }
+.ti-prompt > li::marker, .ti-body ol > li::marker { font:700 15px var(--f-ui); color:var(--teal); }
+.ti-reveal { margin-top:12px; border:1.5px solid var(--line); border-radius:8px; }
+.ti-reveal summary { cursor:pointer; padding:10px 14px; font-weight:700; color:var(--teal); list-style:none; display:flex; align-items:center; gap:10px; }
+.ti-reveal summary::-webkit-details-marker { display:none; }
+.ti-reveal summary::before { content:""; width:7px; height:7px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+  transform:rotate(-45deg); transition:transform .15s; flex:none; }
+.ti-reveal[open] summary::before { transform:rotate(45deg); }
+.ti-body { padding:2px 16px 14px; font:400 16.5px/1.6 var(--f-body); }
+.ti-body ol { margin:0; padding-left:24px; }
+.ti-body ol > li { margin:4px 0 10px; padding-left:4px; }
+.ti-body p { margin:0 0 4px; }
+.ti-why { color:var(--muted); font-size:15px; }
+.ti-credit { margin:14px 0 0; font-size:13px; color:var(--muted); }
+.ti-credit a { color:var(--muted); }
+.tryit .katex { font-size:1.06em; }
+@media (max-width:560px) { .tryit { padding:16px 14px; } .ti-prompt, .ti-body ol { padding-left:20px; } }
