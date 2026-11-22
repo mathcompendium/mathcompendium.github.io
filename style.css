@@ -201,3 +201,32 @@ a.sec-title:hover { text-decoration:underline; }
 .ti-part { display:inline-block; margin-right:2em; }
 .ti-part:last-child { margin-right:0; }
 @media (max-width:560px) { .tryit { padding:16px 14px; } .ti-prompt, .ti-body ol { padding-left:20px; } }
+/* Worked solutions inside the Try It (Dan, 2026-11-21): steps lined up on the relation, a reason beside each, and a button that
+   plays the video from that step. \hl in the math is the video's highlight colour (KaTeX writes it inline; recoloured here). */
+.ws-intro { margin:2px 0 12px !important; color:var(--muted); font-size:15px; }
+.ws-prob { font:700 15px var(--f-ui); color:var(--teal); margin:6px 0 10px !important; }
+.ws-steps { display:grid; grid-template-columns:max-content max-content max-content 1fr; align-items:baseline; overflow-x:auto; }
+.ws-row { display:contents; }
+.ws-row > span { padding:9px 0; border-top:1px solid var(--line); }
+.ws-steps > :first-child > span { border-top:0; }
+.ws-row .l { text-align:right; }
+.ws-row .q { padding:9px 10px; }
+.ws-row .why { padding-left:14px; font-size:15px; color:var(--muted); line-height:1.5; }
+.ws-note { grid-column:1 / -1; padding:12px 0 4px; font:700 15px var(--f-ui); color:var(--teal); border-top:1px solid var(--line); }
+.ws-steps > .ws-note:first-child { border-top:0; padding-top:2px; }
+.ws-say { grid-column:1 / -1; padding:9px 0; border-top:1px solid var(--line); font-size:15.5px; line-height:1.55; }
+.ws-steps > .ws-say:first-child, .ws-note + .ws-say, .ws-note + .ws-row > span { border-top:0; }
+.ws-steps .katex-html { white-space:nowrap; }
+.ws-watch { font:700 12.5px var(--f-ui); color:var(--teal); background:transparent; border:1.5px solid currentColor; border-radius:999px; padding:1px 9px; margin-left:6px; cursor:pointer; white-space:nowrap; vertical-align:1px; }
+.ws-watch:hover { background:var(--teal); color:var(--teal-ink); }
+.ws-check { margin:12px 0 4px !important; font-size:15.5px; }
+.ws-next { margin-top:16px; }
+.ws-tryagain { margin:0 0 10px !important; font-size:15px; }
+.tryit [style*="#E8A33D" i], .tryit [style*="232, 163, 61"] { color:var(--coral) !important; }
+@media (max-width:640px) {
+  .ws-steps { grid-template-columns:max-content max-content 1fr; }
+  .ws-row .why { grid-column:1 / -1; padding:0 0 9px; border-top:0; }
+  .ws-row .q { padding:9px 6px; }
+  .ws-steps .katex { font-size:.95em; }
+  .tryit .ti-body { padding:2px 10px 12px; }
+}

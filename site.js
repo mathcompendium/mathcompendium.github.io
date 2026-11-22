@@ -98,3 +98,26 @@
   label();
 })();
 
+
+/* Worked solutions: a step's button plays the video from that step (Dan, 2026-11-21). The player is the YouTube embed with
+   enablejsapi=1, moved with the embed's postMessage commands; if it is not ready, it is reloaded at that time instead. */
+(function () {
+  var f = document.getElementById('player'), btns = document.querySelectorAll('.ws-watch');
+  if (!f || !btns.length) return;
+  var ready = false;
+  window.addEventListener('message', function (e) {
+    if (!/youtube/.test(e.origin)) return;
+    try { var d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; if (d && d.event) ready = true; } catch (x) {}
+  });
+  function hello() { try { f.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'player', channel: 'widget' }), '*'); } catch (x) {} }
+  f.addEventListener('load', hello); hello();
+  function cmd(func, args) { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*'); }
+  Array.prototype.forEach.call(btns, function (b) {
+    b.addEventListener('click', function () {
+      var t = +b.getAttribute('data-t');
+      if (ready) { cmd('seekTo', [t, true]); cmd('playVideo'); }
+      else { f.src = f.src.replace(/[?&](start|autoplay)=\d+/g, '') + '&start=' + t + '&autoplay=1'; ready = false; }
+      f.closest('.player').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
